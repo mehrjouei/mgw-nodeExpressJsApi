@@ -18,7 +18,8 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
-    "mongoose": "^4.13.6"
+    "@types/bcrypt-nodejs": "0.0.30",
+    "@types/connect-mongo": "0.0.34",
+    "@types/mongoose": "^4.7.28"
   }
 }
