@@ -14,13 +14,15 @@ import * as jwt from 'jsonwebtoken';
 import PostRouter from './router/PostRouter';
 import UserRouter from './router/UserRouter';
 import AuthRouter from './router/auth';
+import ResourcesRouter from './router/resourcesRouter';
+import RolesRouter from './router/RolesRouter';
+
 import { NextFunction, Request } from 'express';
 import { PathParams } from 'express-serve-static-core';
 import { Response } from '_debugger';
 import { DecodeOptions } from 'jsonwebtoken';
 
 class Server {
-
   // set app to be of type express.Application
   public app: express.Application;
 
@@ -53,13 +55,12 @@ class Server {
       res.header('Access-Control-Allow-Credentials', 'true');
       next();
     });
-
   }
 
   // application routes
   public routes(): void {
     const router: express.Router = express.Router();
-    router.use((req: any, res: any, next: NextFunction)=> {
+    router.use((req: any, res: any, next: NextFunction) => {
 
       // check header or url parameters or post parameters for token
       var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -69,23 +70,32 @@ class Server {
         // verifies secret and checks exp
         jwt.verify(token, this.app.get('superSecret'), (err: any, decoded: any) => {
           if (err) {
-            req.user = undefined;
-            next();
+            req.user = {
+              username: "anonymous"
+            };
+            // next();
+            AuthRouter.loginRequired(req, res, next);
           } else {
             req.user = decoded;
-            next();
+            AuthRouter.loginRequired(req, res, next);
+            // next();
           }
         });
       }
-      else{
-        req.user=undefined;
-        req.next();
+      else {
+        req.user = {
+          username: "anonymous"
+        };
+        AuthRouter.loginRequired(req, res, next);
+        // req.next();
       }
     });
     this.app.use('/', router);
     this.app.use('/api/posts', PostRouter);
     this.app.use('/api/users', UserRouter);
     this.app.use('/api/auth', AuthRouter.router);
+    this.app.use('/api/resources', ResourcesRouter);
+    this.app.use('/api/roles', RolesRouter);
     // this.app.use('/api/auth', AuthRouter);
   }
 }

@@ -2,6 +2,8 @@ import { Router, Request, Response } from 'express';
 import User from '../models/User';
 import * as app from '../server';
 import * as jwt from 'jsonwebtoken';
+import Roles from '../models/Roles';
+import Resources from '../models/Resources';
 
 class AuthRouter {
 
@@ -17,7 +19,6 @@ class AuthRouter {
         console.log(req.body);
         User.findOne({ username })
             .then((user: any) => {
-                console.log(user);
                 if (!user) {
                     res.json({ success: false, message: 'Authentication failed. User not found.' });
                 } else if (user) {
@@ -31,7 +32,7 @@ class AuthRouter {
                         // create a token with only our given payload
                         // we don't want to pass in the entire user since that has the password
                         const payload = {
-                            admin: user.admin
+                            username: user.username
                         };
                         var token = jwt.sign(payload, app.default.get('superSecret'), {
                             expiresIn: 1440 // expires in 24 hours
@@ -59,13 +60,49 @@ class AuthRouter {
     }
 
     loginRequired(req: any, res: any, next: any) {
+        console.log(req.user);
         if (req.user) {
-            next();
+            let username = req.user.username;
+            let url = req.originalUrl;
+            User.findOne({ username }).then((loggedInUser: any) => {
+                let rolesCounter = 0;
+                let resourceCounter = 0;
+                console.log(loggedInUser);
+
+                let aa: Array<Promise<any>> = [];
+                for (let role of loggedInUser.Roles) {
+                    aa.push(Roles.findById(role).then((relatedRole: any) => {
+                        resourceCounter = 0;
+                        rolesCounter++;
+                        console.log("***************relatedRole****************/n");
+                        console.log(relatedRole);
+                        for (let resource of relatedRole.resources) {
+                            console.log("***************relatedRescource****************/n");
+                            console.log(resource);
+                            resourceCounter++;
+                            Resources.findById(resource).then((relatedResource: any) => {
+                                var re = new RegExp(relatedResource.resourceContentReg);
+                                console.log(re.exec(url));
+                                if (re.exec(url)) {
+                                    next();
+                                }
+                            })
+                                .catch((err) => {
+                                    return res.status(401).json({ message: 'Unauthorized user!' });
+                                })
+                        }
+                    })
+                        .catch((err) => {
+                            return res.status(401).json({ message: 'Unauthorized user!' });
+                        })
+                    )
+                }
+            })
+
         } else {
-            return res.status(401).json({ message: 'Unauthorized user!' });
+            return res.status(401).json({ message: 'Unauthenticate user!' });
         }
     }
-
 }
 
 const authRoutes = new AuthRouter();

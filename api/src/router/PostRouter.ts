@@ -98,9 +98,9 @@ export class PostRouter {
 
 
   routes() {
-    this.router.get('/', this.all);
+    this.router.get('/list/', this.all);
     this.router.get('/:slug', this.one);
-    this.router.post('/', this.create);
+    this.router.post('/create/', this.create);
     this.router.put('/:slug', this.update);
     this.router.delete('/:slug', this.delete);
   }
