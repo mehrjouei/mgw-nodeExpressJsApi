@@ -38,6 +38,11 @@ let UserSchema: Schema = new Schema({
     default: '',
     required: true
   },
+  admin: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
   posts: [{
     type: Schema.Types.ObjectId,
     ref: 'Post'

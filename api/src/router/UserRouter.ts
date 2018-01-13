@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import User from '../models/User';
-
+import * as app from '../server';
+import * as auth from './auth';
 class UserRouter {
 
   router: Router;
@@ -40,6 +41,7 @@ class UserRouter {
     const username: string = req.body.username;
     const email: string = req.body.email
     const password: string = req.body.password;
+    const admin: string = req.body.admin;
 
 
     const user = new User({
@@ -47,7 +49,8 @@ class UserRouter {
       lastName,
       username,
       email,
-      password
+      password,
+      admin
     })
 
     user.save()
@@ -88,7 +91,7 @@ class UserRouter {
 
   // set up our routes
   routes() {
-    this.router.get('/', this.all);
+    this.router.get('/',auth.default.loginRequired, this.all);
     this.router.get('/:username', this.one);
     this.router.post('/', this.create);
     this.router.put('/:username', this.update);
