@@ -77,9 +77,7 @@ class AuthRouter {
                     var flag=false;
                     for (let role of user.Roles) {
                         for (let res of role.resources) {
-                            console.log(res.resourceContentReg);
                             var reg = new RegExp(res.resourceContentReg);
-                            console.log(reg.exec(url));
                             if (reg.exec(url)) {
                                 flag=true;
                                 next();
@@ -91,40 +89,6 @@ class AuthRouter {
                     }
                 })
 
-            // User.findOne({ username }).then((loggedInUser: any) => {
-            //     let rolesCounter = 0;
-            //     let resourceCounter = 0;
-            //     console.log(loggedInUser);
-
-            //     let aa: Array<Promise<any>> = [];
-            //     for (let role of loggedInUser.Roles) {
-            //         aa.push(Roles.findById(role).then((relatedRole: any) => {
-            //             resourceCounter = 0;
-            //             rolesCounter++;
-            //             console.log("***************relatedRole****************/n");
-            //             console.log(relatedRole);
-            //             for (let resource of relatedRole.resources) {
-            //                 console.log("***************relatedRescource****************/n");
-            //                 console.log(resource);
-            //                 resourceCounter++;
-            //                 Resources.findById(resource).then((relatedResource: any) => {
-            //                     var re = new RegExp(relatedResource.resourceContentReg);
-            //                     console.log(re.exec(url));
-            //                     if (re.exec(url)) {
-            //                         next();
-            //                     }
-            //                 })
-            //                     .catch((err) => {
-            //                         return res.status(401).json({ message: 'Unauthorized user!' });
-            //                     })
-            //             }
-            //         })
-            //             .catch((err) => {
-            //                 return res.status(401).json({ message: 'Unauthorized user!' });
-            //             })
-            //         )
-            //     }
-            // })
 
         } else {
             return res.status(401).json({ message: 'Unauthenticate user!' });
