@@ -25,25 +25,23 @@ export class StateService {
       id: 'center-column',
     },
   ];
-  
+
   protected sidebars: any = [
     {
       name: 'Left Sidebar',
       icon: 'nb-layout-sidebar-left',
       id: 'left',
-      selected: false,
-      
+      selected: true,
     },
     {
       name: 'Right Sidebar',
       icon: 'nb-layout-sidebar-right',
       id: 'right',
-      selected: true,
     },
   ];
 
   protected layoutState$ = new BehaviorSubject(this.layouts[0]);
-  protected sidebarState$ = new BehaviorSubject(this.sidebars[1]);
+  protected sidebarState$ = new BehaviorSubject(this.sidebars[0]);
 
   setLayoutState(state: any): any {
     this.layoutState$.next(state);
