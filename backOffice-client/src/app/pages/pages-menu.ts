@@ -7,10 +7,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
-  // {
-  //   title: 'FEATURES',
-  //   group: true,
-  // },
   {
     title: 'Components',
     icon: 'nb-gear',
@@ -22,6 +18,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Notifications',
         link: '/pages/components/notifications',
       },
+    ],
+  },
+  {
+    title: 'Posts',
+    icon: 'nb-compose',
+    children: [
+      {
+        title: 'List',
+        link: '/pages/posts/list',
+      }
     ],
   },
 

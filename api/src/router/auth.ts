@@ -20,12 +20,13 @@ class AuthRouter {
         User.findOne({ username })
             .then((user: any) => {
                 if (!user) {
-                    res.json({ success: false, message: 'Authentication failed. User not found.' });
+                    res.status(409).json({ success: true, message: 'Authentication failed. User not found.' });
                 } else if (user) {
 
                     // check if password matches
                     if (user.password != req.body.password) {
-                        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+                        
+                        res.status(409).json({ success: false, message: 'Authentication failed. Wrong password.' });
                     } else {
 
                         // if user is found and password is right
@@ -42,7 +43,11 @@ class AuthRouter {
                         res.json({
                             success: true,
                             message: 'Enjoy your token!',
-                            token: token
+                            token: token,
+                            user:{
+                                "firstName":user.firstName,
+                                "lastName":user.lastName
+                            }
                         });
                     }
 
