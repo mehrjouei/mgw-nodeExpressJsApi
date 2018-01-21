@@ -57,6 +57,7 @@ export class NbLoginComponent {
           console.log("errMsg");
           this.errors.push("Server error. Try later.");
         }
-      });
+      })
+      .catch();
   }
 }
