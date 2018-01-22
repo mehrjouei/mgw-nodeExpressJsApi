@@ -25,7 +25,7 @@ class AuthRouter {
 
                     // check if password matches
                     if (user.password != req.body.password) {
-                        
+
                         res.status(409).json({ success: false, message: 'Authentication failed. Wrong password.' });
                     } else {
 
@@ -44,9 +44,9 @@ class AuthRouter {
                             success: true,
                             message: 'Enjoy your token!',
                             token: token,
-                            user:{
-                                "firstName":user.firstName,
-                                "lastName":user.lastName
+                            user: {
+                                "firstName": user.firstName,
+                                "lastName": user.lastName
                             }
                         });
                     }
@@ -79,22 +79,20 @@ class AuthRouter {
                     }
                 })
                 .exec(function (err, user: any) {
-                    var flag=false;
+                    var flag = false;
                     for (let role of user.Roles) {
                         for (let res of role.resources) {
                             var reg = new RegExp(res.resourceContentReg);
                             if (reg.exec(url)) {
-                                flag=true;
+                                flag = true;
                                 next();
                             }
                         }
                     }
                     if (!flag) {
-                        return res.status(401).json({ message: 'Unauthorized user!' }); 
+                        return res.status(401).json({ message: 'Unauthorized user!' });
                     }
                 })
-
-
         } else {
             return res.status(401).json({ message: 'Unauthenticate user!' });
         }

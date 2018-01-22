@@ -31,6 +31,11 @@ let PostSchema: Schema = new Schema({
     type: String,
     default: ''
   },
+  tags: { type: [String], index: true },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   published: {
     type: Boolean,
     default: false

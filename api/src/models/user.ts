@@ -43,10 +43,6 @@ let UserSchema: Schema = new Schema({
     default: false,
     required: true
   },
-  posts: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Post'
-  }],
   Roles: [{
     type: Schema.Types.ObjectId,
     ref: 'Roles'
