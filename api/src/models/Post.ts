@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 
 let PostSchema: Schema = new Schema({
-  timestamp: {
+  createTime: {
     type: Date,
     default: Date.now
   },
@@ -23,11 +23,12 @@ let PostSchema: Schema = new Schema({
     default: '',
     required: true
   },
-  featuredImage: {
+  summary: {
     type: String,
-    default: ''
+    default: '',
+    required: true,
   },
-  category: {
+  featuredImage: {
     type: String,
     default: ''
   },
