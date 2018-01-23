@@ -90,7 +90,7 @@ class AuthRouter {
                         }
                     }
                     if (!flag) {
-                        return res.status(401).json({ message: 'Unauthorized user!' });
+                        return res.status(403).json({ message: 'Unauthorized user!' });
                     }
                 })
         } else {

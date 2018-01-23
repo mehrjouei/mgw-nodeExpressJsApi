@@ -40,6 +40,10 @@ let PostSchema: Schema = new Schema({
   published: {
     type: Boolean,
     default: false
+  },
+  verified: {
+    type: Boolean,
+    default: false
   }
 });
 

@@ -12,10 +12,6 @@ const routes: Routes = [{
     component: DashboardComponent,
   },
    {
-    path: 'components',
-    loadChildren: './components/components.module#ComponentsModule',
-  },
-   {
     path: 'posts',
     loadChildren: './posts/posts.module#PostsModule',
   },

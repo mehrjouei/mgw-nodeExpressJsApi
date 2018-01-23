@@ -67,7 +67,7 @@ export class PostRouter {
 
       post.save()
         .then((data) => {
-          res.status(201).json({ data });
+          res.status(200).json({ data });
         })
         .catch((error) => {
           res.status(500).json({ error });
