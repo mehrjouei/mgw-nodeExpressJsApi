@@ -14,12 +14,12 @@ import * as jwt from 'jsonwebtoken';
 import PostRouter from './router/PostRouter';
 import UserRouter from './router/UserRouter';
 import AuthRouter from './router/auth';
-import ResourcesRouter from './router/resourcesRouter';
+import ResourcesRouter from './router/ResourcesRouter';
 import RolesRouter from './router/RolesRouter';
 
 import { NextFunction, Request } from 'express';
 import { PathParams } from 'express-serve-static-core';
-import { Response } from '_debugger';
+// import { Response } from '_debugger';
 import { DecodeOptions } from 'jsonwebtoken';
 
 class Server {
