@@ -1,0 +1,49 @@
+@import "variables";
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: bold;
+    src: url('/assets/fonts/IRANSansWeb.eot');
+    src: url('/assets/fonts/IRANSansWeb.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('/assets/fonts/IRANSansWeb.woff2') format('woff2'), /* Chrome36+, Opera24+*/
+    url('/assets/fonts/IRANSansWeb.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('/assets/fonts/IRANSansWeb.ttf') format('truetype');
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    direction: ltr;
+    font-family: $fontFamily;
+    font-size: $medium;
+    text-align: unset;
+}
+
+input,
+select,
+textarea {
+    font-family: $fontFamily;
+}
+
+a {
+    text-decoration: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+.validationMessage {
+    position: absolute;
+    font-size: 9px;
+    background-color: rgba(216, 14, 14, .75);
+    padding: 5px;
+    color: #fff;
+    border-radius: 3px;
+}

@@ -1,0 +1,25 @@
+ng2-smart-table table{
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+    border-width: 2px;
+    
+    display: table;
+    border-spacing: 2px;
+    border-color: rgba(0,0,0,.125); /* border of the big table*/
+}
+/* grid lines */
+ng2-smart-table table > tbody > tr > td {
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+/* headers grid color*/
+ng2-smart-table thead > tr > th  { 
+    border: 1px solid rgba(0,0,0,.125);
+        background-color: rgba(0,0,0,.03);
+}  
+/*font size*/
+ng2-smart-table {
+    font-size:16px;
+}

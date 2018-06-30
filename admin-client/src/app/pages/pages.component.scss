@@ -1,0 +1,299 @@
+@import 'src/app/@theme/variables';
+
+.headerDiv {
+    height: 70px;
+    background-color: rgb(206, 206, 206);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-right: 260px;
+    transition: all 150 linear;
+}
+
+.headerDiv.sliderCollapsed {
+    margin-right: 60px;
+}
+
+.headerDiv .leftBtn {
+    float: left;
+    margin-top: 20px;
+    font-size: 26px;
+    margin-left: 19px;
+    cursor: pointer;
+}
+
+.sidebar {
+    width: 260px;
+    height: 100%;
+    position: fixed;
+
+    top: 0px;
+    right: 0px;
+    background: #FB404B;
+    background: -moz-linear-gradient(top, #FB404B 0%, rgba(187, 5, 2, 0.7) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FB404B), color-stop(100%, rgba(187, 5, 2, 0.7)));
+    background: -webkit-linear-gradient(top, #FB404B 0%, rgba(187, 5, 2, 0.7) 100%);
+    background: -o-linear-gradient(top, #FB404B 0%, rgba(187, 5, 2, 0.7) 100%);
+    background: -ms-linear-gradient(top, #FB404B 0%, rgba(187, 5, 2, 0.7) 100%);
+    background: linear-gradient(to bottom, #FB404B 0%, rgba(187, 5, 2, 0.7) 100%);
+    background-size: 150% 150%;
+    z-index:995;
+    transition: all 150ms linear;
+}
+
+.sidebar.collapsed {
+    margin-right: -200px;
+}
+
+.sidebar-wrapper {
+    position: relative;
+    z-index: 5;
+    color: white;
+}
+
+.sidebar-wrapper ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sidebar-wrapper ul li {
+    padding: 7px;
+}
+
+.sidebar-wrapper ul li a {
+    display: block;
+    padding: 10px 8px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.sidebar-wrapper ul li a.active {
+    display: block;
+    padding: 10px 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-wrapper ul li a:hover {
+    background-color: #ffffff26;
+}
+
+.sidebar-wrapper ul li a i.fa {
+    vertical-align: middle;
+    font-size: 30px;
+    margin-left: 8px;
+}
+
+.sidebar-wrapper a {
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar-wrapper .logo {
+    text-align: center;
+    font-size: 25px;
+    padding: 15px;
+    position: relative;
+}
+
+.sidebar-wrapper .logo .collapseSideBar {
+    float: left;
+    margin-top: 3px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.sidebar-wrapper .number {
+    font-size: 19px;
+    padding: 13px;
+    position: relative;
+}
+
+.sidebar.collapsed .number {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-wrapper .logo:after {
+    width: 100%;
+}
+
+.sidebar.collapsed .sidebar-wrapper ul li a .fa {
+    float: left;
+    margin-left: 0px;
+}
+
+.sidebar-wrapper .fa {
+    vertical-align: middle;
+}
+
+.sidebar-wrapper .number .fa:first-child {
+    margin-left: 5px;
+    border-radius: 50%;
+    border: 1px solid white;
+    padding: 5px;
+    display: inline-block;
+}
+
+.sidebar-wrapper .number .dropDownIcon {
+    float: left;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: all 200ms linear;
+}
+
+.sidebar-wrapper .number .dropDownIcon.expanded {
+    transform: rotate(180deg);
+}
+
+.sidebar-wrapper .number .current {
+    cursor: pointer;
+}
+
+.sidebar-wrapper .number .myMsisdnList {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: none;
+    font-size: 16px;
+    padding: 5px 10px 5px 10px;
+    background-color: #ffffff24;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+.sidebar-wrapper .number .myMsisdnList.active {
+    display: block;
+}
+
+.sidebar-wrapper .number .myMsisdnList li {
+    padding: 5px;
+    padding-right: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #ffffff26;
+    transition: all 300ms linear;
+    border-radius: 3px;
+}
+
+.sidebar-wrapper .number .myMsisdnList li:hover {
+    background-color: #ffffff26;
+}
+
+.sidebar-wrapper .number .myMsisdnList li:last-child {
+    border-bottom: 0px;
+}
+
+.sidebar-wrapper .number .myMsisdnList li::before {
+    display: inline-block;
+    content: '';
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 4px;
+    display: inline-block;
+    font: normal normal normal 14px/1 'EcareIcons';
+    font-size: 18px;
+    // speak-as: none;
+    text-transform: none;
+    /* Better Font Rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sidebar-wrapper .number .myMsisdnList li.current::before {
+    content: "\ea0a";
+    color: #FFC107;
+}
+
+.sidebar-wrapper .number:after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-wrapper .logo:after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: 15px;
+    width: calc(100% - 30px);
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-background {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+    background-image: url(/assets/img/slider_bg_1.jpg);
+
+}
+
+.sidebar:before {
+    opacity: .33;
+    background: #000000;
+    content: '';
+}
+
+.sidebar:after {
+    background: $mainColor;
+    background: -moz-linear-gradient(top, $mainColor 0%, rgba( rgba(darken($mainColor,10%),0.8),0.1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$mainColor), color-stop(100%,  rgba(darken($mainColor,10%),0.8)));
+    background: -webkit-linear-gradient(top,$mainColor 0%, rgba(darken($mainColor,10%),0.8) 100%);
+    background: -o-linear-gradient(top, $mainColor 0%,  rgba(darken($mainColor,10%),0.8) 100%);
+    background: -ms-linear-gradient(top, $mainColor 0%,  rgba(darken($mainColor,10%),0.8) 100%);
+    background: linear-gradient(to bottom, $mainColor 0%,  rgba(darken($mainColor,10%),0.8) 100%);
+    background-size: 150% 150%;
+    opacity: .95;
+}
+
+.sidebar:after,
+.sidebar:before {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.content {
+    margin-right: 270px;
+    margin-top:15px;
+    transition: all 150 linear;
+}
+
+.content.sliderCollapsed {
+    margin-right: 70px;
+}
+.sidebar-white-bg{
+    display:none;
+}
+@media only screen and (max-width: 900px) {
+    .content {
+       margin-right: 70px;
+    }
+    .headerDiv{
+        margin-right:60px;
+    }
+    .sidebar-white-bg.active{
+        display:block;
+        position: fixed;
+        width:100%;
+        height:100%;
+        z-index:998;
+        background-color:rgba($color: #000000, $alpha: 0.2)
+    }
+
+}

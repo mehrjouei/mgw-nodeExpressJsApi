@@ -1,0 +1,18 @@
+<form class="form" (ngSubmit)="DoLogin()">
+  <div class="thumbnail">
+    <img src="/assets/img/mgw-logo.png">
+
+
+  </div>
+  <div class="login-form">
+    <input type="text" [(ngModel)]="user.username" name="username" placeholder="username">
+    <input type="password" [(ngModel)]="user.password" name="password" placeholder="password">
+    <div *ngIf="errorMessages.length > 0" class="has-error">
+      <div *ngFor="let errorMessage of errorMessages">
+        <small>{{ errorMessage.description }}</small>
+      </div>
+    </div>
+    <button type="submit">Login</button>
+
+  </div>
+</form>

@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          کاربران پشتیبانی
+        </div>
+        <div class="card-body">
+          <ng2-smart-table [settings]="settings" [source]="data" (userRowSelect)="selectRow($event)"></ng2-smart-table>
+          <div style="margin-top:10px">
+            <button routerLink="/pages/users/create" class="btn btn-primary">ثبت کاربر جدید</button>
+            <button [disabled]="selectedRow==null" routerLink="/pages/users/view/{{selectedRow?selectedRow.id:''}}" class="btn btn-secondary">مشاهده</button>
+            <button [disabled]="selectedRow==null" routerLink="/pages/users/update/{{selectedRow?selectedRow.id:''}}" class="btn btn-secondary">ویرایش کاربر</button>
+            <button [disabled]="selectedRow==null" routerLink="/pages/users/resetPassword/{{selectedRow?selectedRow.id:''}}" class="btn btn-secondary">ریست رمز عبور</button>
+            <button [disabled]="selectedRow==null" routerLink="/pages/users/activeDeactive/{{selectedRow?selectedRow.id:''}}" class="btn btn-secondary">
+              <span *ngIf="(selectedRow && !selectedRow.isActive); else deactiveBtnTitle">
+                فعال کردن
+              </span>
+              <ng-template #deactiveBtnTitle>
+                غیرفعال کردن
+              </ng-template>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

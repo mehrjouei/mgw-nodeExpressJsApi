@@ -1,0 +1,12 @@
+<router-outlet></router-outlet>
+<modal #messageModalDiv (onSubmit)="modalSubmitBtnClick()" submitButtonLabel="{{this.modalService.submitButtonLabel}}" cancelButtonLabel="{{this.modalService.cancelButtonLabel}}">
+    <modal-header>
+        <h4>پیغام</h4>
+    </modal-header>
+    <modal-content>
+        {{this.modalService.modalMessage}}
+    </modal-content>
+    <modal-footer>
+
+    </modal-footer>
+</modal>

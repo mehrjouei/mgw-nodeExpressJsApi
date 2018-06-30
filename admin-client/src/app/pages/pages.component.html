@@ -1,0 +1,49 @@
+<div [ngClass]="sliderCollapsed?'':'active'" (click)="sliderCollapsed?sliderCollapsed=false:sliderCollapsed=true" class="sidebar-white-bg"></div>
+
+<div class="headerDiv" [ngClass]="sliderCollapsed?'sliderCollapsed':''">
+  <a class="leftBtn">
+    <span (click)="signout()">
+      <i class="fa fa-sign-out"></i>
+    </span>
+  </a>
+
+</div>
+<div [ngClass]="sliderCollapsed?'collapsed':''" class="sidebar">
+  <div class="sidebar-wrapper">
+    <div class="logo">
+      پنل پشتیبانی
+      <span (click)="sliderCollapsed?sliderCollapsed=false:sliderCollapsed=true" class="collapseSideBar">
+        <i class="fa fa-bars"></i>
+      </span>
+    </div>
+    <!-- <div class="number" *ngIf="myMsisdns && myMsisdns.list && myMsisdns.list.length>0">
+      <div class="current" (click)="myMsisdnListCollapse?myMsisdnListCollapse=false:myMsisdnListCollapse=true">
+        <span class="nc-icon nc-ic_sim_card_48px"></span>
+        {{myMsisdns.currentMsisdn.MobileNumber}}
+        <span class="dropDownIcon nc-icon nc-ic_keyboard_arrow_down_48px" [ngClass]="myMsisdnListCollapse?'expanded':''"></span>
+      </div>
+      <ul class="myMsisdnList" [ngClass]="myMsisdnListCollapse?'active':''">
+        <li *ngFor="let msisdn of myMsisdns.list" (click)="changeCurrentMsisdn(msisdn);myMsisdnListCollapse=false;" [ngClass]="msisdn.MobileNumber==myMsisdns.currentMsisdn.MobileNumber?'current':''">{{msisdn.MobileNumber}}</li>
+      </ul>
+    </div> -->
+    <ul>
+      <li>
+        <a routerLink="/pages/dashboard" (click)="collapseOnClick()" routerLinkActive="active">
+          <i class="fa fa-desktop"></i>
+          میز کار
+        </a>
+      </li>
+      <li>
+        <a routerLink="/pages/members" (click)="collapseOnClick()" routerLinkActive="active">
+          <i class="fa fa-users-cog"></i>
+          مدیریت کاربران 
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidebar-background"></div>
+</div>
+<div class="content" [ngClass]="sliderCollapsed?'sliderCollapsed':''">
+  <router-outlet></router-outlet>
+</div>
